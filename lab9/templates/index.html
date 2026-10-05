@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заметки</title>
+    <style>
+        body { background-color: #e1c799; }
+        .header { background-color: #6865a2f3;  }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка страницы -->
+    <div class="header">
+        <h1>Заметки</h1>
+    </div>
+
+    <!-- Форма отправки данных -->
+    <form action="/add" method="POST">
+        <input type="text" name="text" placeholder="Текст заметки" required>
+        <input type="text" name="important" placeholder="Важность">
+        <button type="submit">Добавить</button>
+    </form>
+
+    <!-- Очистка -->
+<form action="/clear" method="POST">
+    <button type="submit" style="background-color: #d9534f; color: white;">Clear</button>
+</form>
+
+
+    <h3>Список заметок:</h3>
+    {% for note in notes %}
+        <div>
+            <!-- Текст заметки полужирный по заданию -->
+            <b>{{ note.text }}</b> — {{ note.important }}
+        </div>
+    {% endfor %}
+
+</body>
+</html>
